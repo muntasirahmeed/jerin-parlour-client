@@ -33,7 +33,7 @@ const AwesomeServices = () => {
     },
   ];
   return (
-    <div className="py-20 bg-base-100">
+    <div className="py-16 bg-base-100">
       <h1 className="text-center text-accent font-bold text-2xl mb-16 ">
         Our Awesome <span className="text-primary">Services</span>
       </h1>
@@ -42,6 +42,10 @@ const AwesomeServices = () => {
           <Service key={service.id} service={service}></Service>
         ))}
       </div>
+
+      <button className="px-8 mt-16 block mx-auto  rounded py-3 hover:bg-rose-600 transition duration-300 ease-in-out bg-primary text-white">
+        Explore more
+      </button>
     </div>
   );
 };
