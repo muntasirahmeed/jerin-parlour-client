@@ -8,10 +8,10 @@ const Login = () => {
   return (
     <div>
       <Navber></Navber>
-      <div className="h-[95vh] flex justify-center items-center">
-        <div className="w-full md:w-[30%]">
+      <div className="h-full md:h-[95vh]  my-10 lg:my-0 container flex justify-center items-center">
+        <div className="w-full  md:w-[50%] lg:w-[35%]">
           <img className="h-[60px] mx-auto w-40" src={logo} alt="" />
-          <div className="  pt-16 pb-10 px-5 md:px-10 mx-4 md:mx-0 bg-secondary rounded-xl mt-10">
+          <div className="  pt-16 pb-10 px-5 md:px-10  bg-secondary rounded-xl mt-10">
             <form>
               <div className="flex flex-col space-y-8">
                 <input
@@ -43,6 +43,10 @@ const Login = () => {
               >
                 Login
               </button>
+              <p className="text-sm mt-4 text-center text-gray-500">
+                Don't have and account ?{" "}
+                <span className="text-primary">Login</span>
+              </p>
               <div className="divider my-7 ">Or</div>
               <div className="bg-white rounded-full shadow-sm py-3 text-gray-500 text-center relative">
                 <span>Continue With Google</span>

@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
         <div>
           <span class=" text-lg md:mb-3 font-semibold">About Us</span>
-          <p className="w-80">
+          <p className="w-full lg:w-80">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Praesentium natus, maiores asperiores obcaecati numquam soluta
             dicta? Harum doloremque
