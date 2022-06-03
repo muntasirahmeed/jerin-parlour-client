@@ -5,15 +5,15 @@ import Footer from "../Shared/Footer";
 import googleImg from "../Assests/Images/Icon/Group 573.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
-  useSignInWithEmailAndPassword,
+  useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../Shared/firebase.init";
 import { useForm } from "react-hook-form";
 import Spinner from "../Shared/Spinner";
-const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
-    useSignInWithEmailAndPassword(auth);
+const SignUp = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const {
     register,
@@ -54,7 +54,7 @@ const Login = () => {
     }
   }
   const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+    createUserWithEmailAndPassword(data.email, data.password);
   };
   return (
     <div className="">
@@ -62,15 +62,32 @@ const Login = () => {
       <div className="h-full md:h-[95vh]  my-10 lg:my-0 container flex justify-center items-center">
         <div className="w-full  md:w-[50%] lg:w-[35%]">
           <img className="h-[60px] mx-auto w-40" src={logo} alt="" />
-          <div className="  pt-16 border-[1px] border-gray-400 pb-10 px-5 md:px-10  rounded-md mt-10">
+          <div className="  border-[1px] border-gray-400 pb-10 px-7   rounded-md mt-10">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div
-                className={`flex flex-col space-y-4`}
-              >
+              <h1 className="font-poppins text-2xl pt-8 pb-5 text-center text-slate-700 font-semibold uppercase">
+                Join <span className="">Our</span> Family
+              </h1>
+              <div className="flex flex-col space-y-3">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  class=" w-full py-3  border-b-[1px] border-gray-400   focus:outline-none"
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Name is required!",
+                    },
+                  })}
+                />
+                {errors.name?.type === "required" && (
+                  <span className="label-text-alt text-red-600  ">
+                    {errors.email.message}
+                  </span>
+                )}
                 <input
                   type="email"
                   placeholder="Email"
-                  class=" w-full placeholder:text-lg py-3  border-b-[1px] border-gray-400 focus:outline-none"
+                  class=" w-full py-3  border-b-[1px] border-gray-400   focus:outline-none"
                   {...register("email", {
                     required: {
                       value: true,
@@ -95,7 +112,7 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  class=" w-full placeholder:text-lg py-3  border-b-[1px] border-gray-400   focus:outline-none"
+                  class=" w-full  py-3  border-b-[1px] border-gray-400   focus:outline-none"
                   {...register("password", {
                     required: {
                       value: true,
@@ -119,34 +136,22 @@ const Login = () => {
                 )}
                 {errorMsg}
               </div>
-              <div className="flex items-center justify-between mt-5">
-                <div className="flex pl-1 items-center ">
-                  <input
-                    defaultChecked
-                    type="checkbox"
-                    name=""
-                    className="checkbox checkbox-sm checkbox-primary mr-3"
-                    id=""
-                  />
-                  <span className="text-sm  text-gray-500 ">Remember me</span>
-                </div>
-                <p className="text-sm  text-gray-500 ">Forget Password?</p>
-              </div>
+
               <button
                 type="submit"
-                className="px-8 mt-7 w-full  rounded py-3 hover:bg-rose-600 transition duration-300 ease-in-out bg-primary text-white"
+                className="px-8 mt-9 w-full  rounded py-3 hover:bg-rose-600 transition duration-300 ease-in-out bg-primary text-white"
               >
-                Login
+                Create an Account
               </button>
               <p className="text-sm mt-3 text-center text-gray-500">
-                Don't have and account ?{" "}
-                <Link to="/signup" className="text-primary">
-                  Create Account
+                Already have an account ?{" "}
+                <Link to="/login" className="text-primary">
+                  Login
                 </Link>
               </p>
               <div className="divider my-5 ">Or</div>
               <div
-                className="bg-white rounded-full cursor-pointer shadow-sm py-3 text-gray-500 text-center relative"
+                className="bg-white rounded-full shadow-sm cursor-pointer py-3 text-gray-500 text-center relative"
                 onClick={() => signInWithGoogle()}
               >
                 <span>Continue with Google</span>
@@ -165,4 +170,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

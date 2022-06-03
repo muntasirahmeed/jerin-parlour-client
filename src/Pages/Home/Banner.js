@@ -3,10 +3,10 @@ import headerImg from "../../Assests/Images/Image/header.png";
 import Navber from "../../Shared/Navber";
 const Banner = () => {
   return (
-    <div className="pt-5 pb-3 bg-neutral">
+    <div className=" pb-3 bg-neutral">
       <Navber></Navber>
       <div className="flex items-center  flex-col md:flex-col-reverse lg:flex-row justify-center h-full lg:h-[65vh] pt-5 md:pt-10  container">
-        <div className="flex-1 md:text-center lg:text-left">
+        <div className="  md:text-center lg:text-left">
           {" "}
           <div className="space-y-2 lg:mt-0 md:mt-5   md:space-y-3">
             <h1 className="text-3xl md:text-5xl font-bold text-[#111430]">
@@ -24,9 +24,9 @@ const Banner = () => {
             Get an Appointment
           </button>
         </div>
-        <div className="flex-1">
+        <div className="w-full md:w-5/12 ">
           <img
-            className=" w-[484px] lg:h-[478px] mx-auto"
+            className=" h-full w-full block "
             src={headerImg}
             alt=""
           />

@@ -5,9 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/autoplay";
 
 // import required modules
-import { Pagination } from "swiper";
+import { Pagination,Autoplay } from "swiper";
 import img1 from "../../Assests/Images/Image/Ellipse 90.png";
 import img2 from "../../Assests/Images/Image/Ellipse 91.png";
 import img3 from "../../Assests/Images/Image/Ellipse 92.png";
@@ -30,11 +31,13 @@ const Testimonials = () => {
       </h1>
       <div className="container">
         <Swiper
+          
           slidesPerView={1}
           spaceBetween={10}
           pagination={{
             clickable: true,
           }}
+          autoplay={true}
           breakpoints={{
             "@0.00": {
               slidesPerView: 1,
@@ -53,7 +56,7 @@ const Testimonials = () => {
               spaceBetween: 10,
             },
           }}
-          modules={[Pagination]}
+          modules={[Pagination,Autoplay]}
           className="mySwiper h-[340px]"
         >
           <h1>hello</h1>
