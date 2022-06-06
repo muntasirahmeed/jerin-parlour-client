@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { MenuAlt1Icon, MenuAlt3Icon, XIcon } from "@heroicons/react/solid";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./firebase.init";
 import { signOut } from "firebase/auth";
 import logo from "../Assests/Images/Group 33092.png";
+import CustomLink from "./CustomLink";
 const Navber = () => {
   const [open, setOpen] = useState(false);
   const [user] = useAuthState(auth);
@@ -48,73 +49,41 @@ const Navber = () => {
                 : "top-[-490px] md:opacity-100 opacity-0 transition-all ease-in"
             }`}
           >
-            <Link
-              to="/"
-              className=" px-5 text-accent rounded py-1   "
-            >
+            <CustomLink to="/" className=" px-5 text-accent rounded py-1   ">
               Home
-            </Link>
-            {user && (
-              <Link
-                to="/dashboard"
-                className=" px-5 text-accent rounded py-1  "
-              >
-                Dashboard
-              </Link>
-            )}
+            </CustomLink>
 
-            <Link
+            <CustomLink
               to="/our-team"
               className=" px-5 text-accent rounded py-1   "
             >
               About
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               to="/contact"
               className=" px-5 text-accent rounded py-1   "
             >
               Contact
-            </Link>
+            </CustomLink>
+            {user && (
+              <CustomLink
+                to="/dashboard/guide"
+                className=" px-5 text-accent rounded py-1  "
+              >
+                Dashboard
+              </CustomLink>
+            )}
 
-            <Link
-              to="/dashboard"
-              className=" px-5 text-accent rounded py-1   "
-            >
-              Dashboard
-            </Link>
             {user ? (
-              <div className="dropdown self-center dropdown-end  ">
-                <label
-                  tabIndex="0"
-                  className="  px-4 font-semibold rounded py-2  bg-primary text-white"
-                >
-                  Profile
-                </label>
-                <ul
-                  tabIndex="0"
-                  className="dropdown-content menu space-y-2 rounded-lg top-8  px-2 py-4 shadow bg-base-100  w-44 "
-                >
-                  <li>
-                    <Link
-                      to="/dashboard"
-                      className="btn btn-secondary text-accent rounded-md "
-                    >
-                      {user.displayName}
-                    </Link>
-                  </li>
-                  <li className="">
-                    <button
-                      className="px-5 font-semibold rounded py-2 flex items-center justify-center bg-primary text-white"
-                      onClick={() => {
-                        signOut(auth);
-                        navigate("/");
-                      }}
-                    >
-                      Sign Out
-                    </button>
-                  </li>
-                </ul>
-              </div>
+              <button
+                className="px-5 font-semibold rounded py-2 flex items-center justify-center bg-primary text-white"
+                onClick={() => {
+                  signOut(auth);
+                  navigate("/");
+                }}
+              >
+                Sign Out
+              </button>
             ) : (
               <Link
                 to="/login"

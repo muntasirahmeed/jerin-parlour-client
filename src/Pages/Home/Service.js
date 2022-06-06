@@ -1,10 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Service = ({ service }) => {
-  const { name, price, description, img } = service;
+  const { _id, name, price, description, img } = service;
+  const navigate = useNavigate();
   return (
     <div
-      className={` even:bg-white even:drop-shadow-2xl md:even:drop-shadow-0 lg:even:drop-shadow-2xl  w-[350px] h-[300px] md:w-[370px] md:h-[317px]    rounded-xl flex flex-col justify-center items-center`}
+      onClick={() => navigate(`/dashboard/booking/${_id}`)}
+      className={` even:bg-white even:drop-shadow-2xl md:even:drop-shadow-0 lg:even:drop-shadow-2xl  w-[350px] h-[300px] md:w-[370px] md:h-[317px] odd:hover:shadow-xl hover:transition-all hover:ease-in-out hover:duration-300  cursor-pointer  rounded-xl flex flex-col justify-center items-center`}
     >
       <img src={img} className="w-[72px] h-[72px]" alt="" />
       <h2 className="mt-4 mb-1 font-semibold text-accent">{name}</h2>
